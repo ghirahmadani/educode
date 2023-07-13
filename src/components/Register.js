@@ -2,53 +2,75 @@ import React from "react";
 
 import { Link} from "react-router-dom";
 import { useState } from "react";
+import { useForm } from "react-hook-form";
+import axios from "axios";
+import Alert from "./Alert";
 
 const Register = () => {
 
-  // const [nama, setNama] = useState('')
-  // const [email, setEmail] = useState('')
-  // const [password, setPassword] = useState('')
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  const [data, setData] = useState({
-    nama: "",
-    email: "",
-    password: ""
-  })
+  const [isSuccess, setIsSuccess] = useState(null);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    
-    const nama = data.nama;
-    const email = data.email;
-    const password = data.password;
+  const { handleSubmit } = useForm();
+
+  const onSubmit = async() => {
+
+    const form = new FormData();
+    form.append("name", name)
+    form.append("username", email)
+    form.append("password", password)
+    const value = Object.fromEntries(form.entries());
+
+    await axios
+    .post(`${process.env.REACT_APP_API_URL}/auth/register`, value,
+    {
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*'
+      }
+    })
+    .then((res) => {
+      setIsSuccess(res.data.message)
+    })
+    .catch((err) => {
+      console.log(err)
+    })
   }
 
   return (
     <section className="bg-white">
+
+      {
+        isSuccess && 
+          <Alert isSuccess={isSuccess} handleSuccess={(isSuccess) => {setIsSuccess(isSuccess)}}/>
+      }
+
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto my-36">
-        <div className="w-full bg-white rounded-lg shadow  max-w-md">
-          <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
+        <div className="w-full bg-white rounded-lg sm:shadow max-w-md">
+
+          <div className="p-6 space-y-4">
             <h1 className="flex justify-items-start text-xl font-bold leading-tight tracking-tight text-gray-900">
               Create account
             </h1>
-            <form className="space-y-4" onSubmit={handleSubmit}>
+            <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
               <div>
-                <label
-                  htmlFor="nama"
-                  className="flex justify-items-start mb-2 text-sm font-medium text-gray-900"
-                >
-                  Name
-                </label>
-                <input
-                  type="text"
-                  name="nama"
-                  id="nama"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                  placeholder="your name"
-                  value={data.nama}
-                  onChange={(e) => setData({...data, nama:e.target.value})}
-                  required
-                />
+              <label
+                htmlFor="nama"
+                className="flex justify-items-start mb-2 text-sm font-medium text-gray-900"
+              >
+                Name
+              </label>
+              <input
+                type="text"
+                name="nama"
+                id="nama"
+                onChange={(event) => setName(event.target.value)}
+                className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                required
+              />
               </div>
               <div>
                 <label
@@ -61,10 +83,8 @@ const Register = () => {
                   type="email"
                   name="email"
                   id="email"
+                  onChange={(event) => setEmail(event.target.value)}
                   className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" autoComplete="current-username"
-                  placeholder="name@company.com"
-                  value={data.email}
-                  onChange={(e) => setData({...data, email:e.target.value})}
                   required
                 />
               </div>
@@ -79,10 +99,8 @@ const Register = () => {
                   type="password"
                   name="password"
                   id="password"
-                  placeholder="••••••••"
+                  onChange={(event) => setPassword(event.target.value)}
                   className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" autoComplete="current-password"
-                  value={data.password} 
-                  onChange={(e) => setData({...data, password:e.target.value})}
                   required
                 />
               </div>          
@@ -102,8 +120,10 @@ const Register = () => {
               </p>
             </form>
           </div>
+          
         </div>
       </div>
+
     </section>
   );
 };
