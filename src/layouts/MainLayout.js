@@ -51,7 +51,7 @@ const MainLayout = () => {
             <div className="relative">
               <div className="fixed inset-0 bg-gradient-to-r from-pink-300 via-purple-300 to-indigo-400 transition-opacity z-10" />
               <div
-                className="fixed inset-x-0 mx-auto top-[240px] w-3/12 rounded-lg bg-white text-white shadow-md px-4 py-3 z-20"
+                className="fixed inset-x-0 mx-auto top-[320px] md:top-[240px] w-10/12 md:w-3/12 rounded-lg bg-white text-white shadow-md px-4 py-3 z-20"
                 role="alert"
               >
                 <h1 className="w-full text-stone-900 font-bold mt-2 text-3xl text-center">

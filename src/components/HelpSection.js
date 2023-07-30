@@ -1,13 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Chara from "../assets/help.png";
+import Help1 from "../assets/Help-01.jpg"
+import Help2 from "../assets/Help-02.jpg"
 
 const HelpSection = () => {
   return (
     <div className="md:container p-6 md:p-20 w-full md:w-10/12 mx-auto">
       <div className="grid md:grid-cols-2 justify-items-center content-center gap-10 md:gap-0 my-20 md:my-0">
-        <div className="w-11/12 h-[300px] md:h-[1000px] bg-purple-100 md:my-24 rounded-lg"></div>
-        <div className="w-11/12 h-[300px] md:h-[1000px] bg-purple-100 md:my-24 rounded-lg"></div>
+        <img className="w-11/12 h-full md:h-[1000px] md:my-24 rounded-lg" src={Help1} alt="help-educode"></img>
+        <img className="w-11/12 h-full md:h-[1000px] md:my-24 rounded-lg" src={Help2} alt="help-educode"></img>
       </div>
 
       <h1 className="flex justify-start items-center text-left font-extrabold">
@@ -30,9 +32,9 @@ const HelpSection = () => {
       </h1>
       <div className="border border-stone-900 border-b-1 mt-5 md:mb-0"></div>
 
-      <div className="flex flex-col md:flex-row justify-center items-center w-full rounded-full h-auto md:h-48 md:border p-4 gap-10 my-4 mb-20 md:mb-12">
+      <div className="flex flex-col md:flex-row justify-center items-center w-full rounded-full h-auto md:h-48 md:border p-4 gap-4 md:gap-10 my-4 mb-20 md:mb-12">
         <img src={Chara} className="h-24 w-max" alt="..."></img>
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col items-center md:items-start">
           <h1 className="text-center md:text-left font-bold text-xl mb-2">Perlu Bantuan?</h1>
           <p className="text-center md:text-left text-sm text-stone-700">
             Bantuan tambahan dalam mengakses aplikasi, tekan tombol ini.

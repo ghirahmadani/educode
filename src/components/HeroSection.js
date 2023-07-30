@@ -4,12 +4,14 @@ import { useNavigate } from "react-router-dom";
 import Particle from "./Particle";
 
 import Star from "../assets/star.png"
+import Background from "../assets/bg.gif"
 
 const HeroSection = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="bg-gradient-to-b from-violet-900 via-violet-600 to-pink-400">
+    <div className="bg-black w-full h-[700px] overflow-hidden">
+      <img src={Background} className="absolute bg-red-400 opacity-50 h-full md:w-full object-cover" alt=""/>
       <Particle/>
       <div className="relative isolate px-4 pt-14 lg:px-8">
         <div className="mx-auto max-w-2xl py-64 md:py-48 lg:py-56 w-full">

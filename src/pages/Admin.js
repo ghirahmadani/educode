@@ -242,7 +242,7 @@ const Admin = () => {
                           >
                             Edit
                           </button>
-                          <button
+                          {/* <button
                             className="font-medium p-2 border rounded-lg w-24 text-violet-600 hover:underline"
                             value={i.class_id}
                             onClick={(event) =>
@@ -250,7 +250,7 @@ const Admin = () => {
                             }
                           >
                             Delete
-                          </button>
+                          </button> */}
                           <button
                             className="font-medium p-2 border rounded-lg w-24 text-violet-600 hover:underline"
                             value={i.class_id}

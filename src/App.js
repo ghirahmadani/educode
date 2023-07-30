@@ -19,6 +19,7 @@ import LessonSection from "./components/LessonSection"
 import StudyPage from "./pages/StudyPage";
 import AdminLearning from "./components/AdminLearning";
 import AdminLesson from "./components/AdminLesson";
+import Finish from "./components/Finish";
 
 
 const router = createBrowserRouter(
@@ -31,12 +32,13 @@ const router = createBrowserRouter(
       </Route>
       <Route path='/home' element={<MainLayout/>} >
         <Route index element={<Main/>} />
-        <Route path='learning' element={<StudyPage/>} />
-        <Route path='learning/:classId' element={<LearningPage/>} />
+        <Route path='class' element={<StudyPage/>} />
+        <Route path='class/:classId' element={<LearningPage/>} />
         <Route path='help' element={<HelpPage/>} />
       </Route>
-      <Route path='lesson/:learningId' element={<LearningLayout/>}>
+      <Route path='/home/class/:classId/learning/:learningId' element={<LearningLayout/>}>
         <Route index element={<LessonSection/>}/>
+        <Route path='done' element={<Finish/>}></Route>
       </Route>
       <Route path='/admin' element={<Admin/>} />
       <Route path='/admin/:classId' element={<AdminLearning/>} />

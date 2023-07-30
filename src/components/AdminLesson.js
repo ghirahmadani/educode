@@ -415,7 +415,8 @@ const AdminLesson = () => {
                             </p>
                           )}
                           {Object.keys(i.Quizzies).length !== 0 && (
-                            <p>{i.Quizzies[0].quiz_soal}</p>
+                            <p>Quiz Question
+                            <br />{i.Quizzies[0].quiz_soal}</p>
                           )}
                         </td>
                         <td className="px-6 py-4 gap-2 flex flex-col items-center">

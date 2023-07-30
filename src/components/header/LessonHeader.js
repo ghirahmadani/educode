@@ -1,14 +1,15 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const LessonHeader = () => {
   const navigate = useNavigate();
+  const { classId } = useParams();
 
   return (
-    <nav className="bg-stone-900 fixed w-full z-20 top-0 left-0 border-b border-gray-200">
+    <nav className="bg-stone-900 fixed w-full z-20 top-0 left-0">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <div className="flex order-1">
-          <Link to="/home">
+          <button onClick={() => navigate("/home/class/" + classId)}>
           <div className="flex md:px-3 py-2 transition ease-in-out delay-150 hover:border-white hover:scale-105 duration-200 gap-1">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -26,7 +27,7 @@ const LessonHeader = () => {
             </svg>
             <p className="flex text-white items-center">Close</p>
           </div>
-          </Link>
+          </button>
         </div>
         <div className="flex order-2">
           <button onClick={() => navigate('/home/help') } className="flex border border-gray-400 rounded-lg px-3 py-2 transition ease-in-out delay-150 hover:border-white hover:scale-105 duration-200">

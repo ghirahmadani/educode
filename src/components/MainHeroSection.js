@@ -108,9 +108,9 @@ const MainHeroSection = () => {
               classObject.map((i) => {
                 return (
                   <button
-                    onClick={() => navigate("learning/" + i.class_id)}
+                    onClick={() => navigate("class/" + i.class_id)}
                     key={i.class_id}
-                    className="flex flex-col w-10/12 h-[240px] md:h-[210px] mx-auto justify-start items-center p-6 rounded-lg bg-white border-white border-b-violet-600 border-b-4 hover:border-b-[6px]"
+                    className="flex flex-col w-11/12 md:w-10/12 h-[240px] md:h-[210px] mx-auto justify-start items-center p-6 rounded-lg bg-white border-white border-b-violet-600 border-b-4 hover:border-b-[6px]"
                   >
                     <div className="flex w-20 h-20 rounded-full bg-violet-600 items-center justify-center">
                       <svg
@@ -174,7 +174,7 @@ const MainHeroSection = () => {
             <button
               type="button"
               className="mt-6 md:mt-10 text-white bg-violet-600 font-medium rounded-full text-sm px-10 py-2 text-center transition ease-in-out delay-150 hover:-translate-y-0 hover:scale-110 hover:bg-grey-100 duration-300"
-              onClick={() => navigate("learning/")}
+              onClick={() => navigate("class/")}
             >
               Start Learning
             </button>
